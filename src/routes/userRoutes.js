@@ -1,24 +1,13 @@
 import { Router } from "express";
-// import {
-//   userSignup,
-//   userLogin,
-//   listUsers,
-// } from "../controllers/userController.js";
-// import authMiddleware from "../middlewares/authMiddleware.js";
-// import validate from "../middlewares/validate.js";
-// import {
-//   userSignupSchema,
-//   userLoginSchema,
-// } from "../validations/userValidation.js";
+import { getUsers } from "../controllers/userController.js";
+import rbacMiddleware from "../middlewares/rbacMiddleware.js";
 
 const router = Router();
 
-// router.get("/", authMiddleware(["Admin"]), listUsers);
-// router.post("/signup", validate(userSignupSchema), userSignup);
-// router.post("/login", validate(userLoginSchema), userLogin);
+router.get("/", rbacMiddleware("users", "read"), getUsers);
 
-router.get("/", async (req, res) => {
-  res.send("Hello, User!");
+router.post("/add-user", async (req, res) => {
+  res.send("working..");
 });
 
 export default router;
