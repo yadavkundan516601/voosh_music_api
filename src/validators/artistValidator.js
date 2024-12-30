@@ -8,6 +8,6 @@ export const addArtistSchema = Joi.object({
 
 export const updateArtistSchema = Joi.object({
   name: Joi.string().optional(),
-  grammy: Joi.boolean().optional(),
+  grammy: Joi.number().optional(),
   hidden: Joi.boolean().optional(),
 }).min(1);

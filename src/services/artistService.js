@@ -10,7 +10,7 @@ export const fetchArtists = async ({
 }) => {
   const filters = {};
 
-  if (grammy !== undefined) filters.grammy = grammy === "true";
+  if (grammy) filters.grammy = grammy;
   if (hidden !== undefined) filters.hidden = hidden === "true";
 
   return await Artist.findAll({

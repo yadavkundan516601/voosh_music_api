@@ -40,7 +40,10 @@ export const fetchTracks = async ({
       hidden: track.hidden,
     }));
   } catch (error) {
-    throw ApiError.internal("Failed to fetch tracks.");
+    if (error instanceof ApiError) {
+      throw error;
+    }
+    throw ApiError.internal(error.message);
   }
 };
 
@@ -69,7 +72,10 @@ export const fetchTrackById = async (id) => {
       hidden: track.hidden,
     };
   } catch (error) {
-    throw ApiError.internal("Failed to fetch track by ID.");
+    if (error instanceof ApiError) {
+      throw error;
+    }
+    throw ApiError.internal(error.message);
   }
 };
 

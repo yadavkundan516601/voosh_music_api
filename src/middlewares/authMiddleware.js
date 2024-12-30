@@ -19,13 +19,6 @@ const authMiddleware = async (req, res, next) => {
       next(ApiError.unauthorized("Invalid Token"));
     }
 
-    // Print all data in Redis (keys and values)
-    const keys = await redisClient.keys("*"); // Get all keys from Redis
-    for (let key of keys) {
-      const value = await redisClient.get(key); // Get the value for each key
-      console.log(`Key: ${key}, Value: ${value}`); // Print each key and its value
-    }
-
     // Verify the token
     const user = verifyToken(token);
     req.user = user;

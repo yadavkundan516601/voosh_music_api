@@ -21,8 +21,8 @@ const Artist = sequelize.define(
       allowNull: false,
     },
     grammy: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
     hidden: {
       type: DataTypes.BOOLEAN,
