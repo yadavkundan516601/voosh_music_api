@@ -1,5 +1,5 @@
 import { User, Organization } from "../db/index.js";
-import ApiError from "../utilities/ApiError.js";
+import { ApiError } from "../utilities/ApiError.js";
 import { hashPassword, comparePassword } from "../utilities/bcryptUtils.js";
 import { generateToken } from "../utilities/jwtUtils.js";
 

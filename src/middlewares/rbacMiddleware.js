@@ -1,4 +1,4 @@
-import ApiError from "../utilities/ApiError.js";
+import { ApiError } from "../utilities/ApiError.js";
 import { ROLE_PERMISSIONS } from "../utilities/permissions.js";
 
 const rbacMiddleware = (resource, action) => {

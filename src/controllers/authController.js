@@ -1,6 +1,6 @@
 import { userSignup, userLogin } from "../services/authService.js";
 import { ApiResponse } from "../utilities/ApiResponse.js";
-import ApiError from "../utilities/ApiError.js";
+import { ApiError } from "../utilities/ApiError.js";
 
 const signup = async (req, res, next) => {
   try {
@@ -17,7 +17,7 @@ const signup = async (req, res, next) => {
   }
 };
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
   try {
     const token = await userLogin(req.body.email, req.body.password);
     return res
