@@ -1,16 +1,30 @@
+import redisClient from "../db/redisInstance.js";
 import { verifyToken } from "../utilities/jwtUtils.js";
+import { ApiError } from "../utilities/ApiError.js";
 
-const authMiddleware = (req, res, next) => {
-  // next();
+/**
+ * Auth Middleware - Validates the token and checks if it's blacklisted
+ */
+const authMiddleware = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
-  if (!token) return res.status(401).json({ message: "Token missing" });
+  if (!token) {
+    next(ApiError.badRequest("Token missing"));
+  }
 
   try {
+    // Check if the token is blacklisted
+    const isBlacklisted = await redisClient.get(`blacklist:${token}`);
+    if (isBlacklisted) {
+      next(ApiError.unauthorized("Invalid Token"));
+    }
+
+    // Verify the token
     const user = verifyToken(token);
     req.user = user;
+
     next();
   } catch (error) {
-    res.status(401).json({ message: "Invalid token" });
+    next(ApiError.unauthorized("Invalid Token"));
   }
 };
 

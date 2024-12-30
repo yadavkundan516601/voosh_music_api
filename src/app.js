@@ -1,6 +1,7 @@
 import express from "express";
 import routes from "./routes/index.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import redisClient from "./db/redisInstance.js";
 
 const app = express();
 

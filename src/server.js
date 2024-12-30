@@ -2,7 +2,7 @@ import { sequelize } from "./db/index.js";
 import app from "./app.js";
 import config from "./config/index.js";
 
-const PORT = 3000 || config.port;
+const PORT = config.port || 3001;
 
 const initService = async () => {
   try {

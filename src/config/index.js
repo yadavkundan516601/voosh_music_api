@@ -29,6 +29,7 @@ const config = {
   databaseUrl: value.DB_URL,
   jwtSecret: value.JWT_SECRET,
   apiPrefix: value.API_PREFIX,
+  redisUrl: value.REDIS_URL,
 };
 
 export default config;
