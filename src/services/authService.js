@@ -46,7 +46,7 @@ const userLogin = async (email, password) => {
     if (!user) throw ApiError.notFound("User not found");
 
     const isPasswordValid = await comparePassword(password, user.password);
-    if (!isPasswordValid) throw new Error("Invalid credentials");
+    if (!isPasswordValid) throw ApiError.badRequest();
 
     return generateToken(user);
   } catch (error) {

@@ -10,11 +10,17 @@ import validate from "../middlewares/validate.js";
 import {
   addUserSchema,
   updatePasswordSchema,
+  getUsersQuerySchema,
 } from "../validators/userValidator.js";
 
 const router = Router();
 
-router.get("/", rbacMiddleware("users", "read"), getUsers);
+router.get(
+  "/",
+  validate(getUsersQuerySchema, "query"),
+  rbacMiddleware("users", "read"),
+  getUsers
+);
 
 router.post(
   "/add-user",

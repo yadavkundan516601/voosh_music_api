@@ -2,7 +2,7 @@ import Joi from "joi";
 
 export const addArtistSchema = Joi.object({
   name: Joi.string().required(),
-  grammy: Joi.boolean().default(false),
+  grammy: Joi.number.default(0),
   hidden: Joi.boolean().default(false),
 });
 

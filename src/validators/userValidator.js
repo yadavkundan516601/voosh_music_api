@@ -11,4 +11,10 @@ const updatePasswordSchema = Joi.object({
   new_password: Joi.string().min(8).required(),
 });
 
-export { addUserSchema, updatePasswordSchema };
+const getUsersQuerySchema = Joi.object({
+  limit: Joi.number().min(1).max(100).default(5),
+  offset: Joi.number().min(0).default(0),
+  role: Joi.string().valid("editor", "viewer").optional(),
+});
+
+export { addUserSchema, updatePasswordSchema, getUsersQuerySchema };
