@@ -4,7 +4,7 @@ import {
   addUser,
   deleteUser,
   updatePassword,
-} from "../controllers/usersController.js";
+} from "../controllers/userController.js";
 import rbacMiddleware from "../middlewares/rbacMiddleware.js";
 import validate from "../middlewares/validate.js";
 import {
