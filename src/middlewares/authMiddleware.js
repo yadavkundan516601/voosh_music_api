@@ -14,6 +14,7 @@ const authMiddleware = async (req, res, next) => {
   try {
     // Check if the token is blacklisted
     const isBlacklisted = await redisClient.get(`blacklist:${token}`);
+    console.log("isBlacklisted :: ", isBlacklisted);
     if (isBlacklisted) {
       next(ApiError.unauthorized("Invalid Token"));
     }

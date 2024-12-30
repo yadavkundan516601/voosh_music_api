@@ -35,12 +35,6 @@ const login = async (req, res, next) => {
 
 const logout = async (req, res, next) => {
   try {
-    // Retrieve the token from the Authorization header
-    const token = req.headers.authorization?.split(" ")[1];
-    if (!token) {
-      return res.status(401).json(new ApiError(401, "Token missing"));
-    }
-
     // Decode the JWT token to get the expiry (exp)
     let decoded;
     try {
