@@ -56,13 +56,7 @@ export const addTrack = async (req, res, next) => {
  */
 export const updateTrack = async (req, res, next) => {
   try {
-    const updatedTrack = await trackService.updateTrackById(
-      req.params.id,
-      req.body
-    );
-    if (!updatedTrack) {
-      return next(ApiError.notFound("Track not found for update"));
-    }
+    await trackService.updateTrackById(req.params.id, req.body);
     return res.status(204).send(); // No content for success
   } catch (error) {
     next(ApiError.internal(error.message));
